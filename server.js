@@ -1,7 +1,8 @@
 import { createBareServer } from '@tomphttp/bare-server-node';
 import { createServer } from 'node:http';
 
-const bare = createBareServer('/bare/');
+// Changed endpoint from '/bare/' to '/myserver/'
+const bare = createBareServer('/myserver/'); 
 const server = createServer();
 
 server.on('request', (req, res) => {
@@ -9,7 +10,7 @@ server.on('request', (req, res) => {
         bare.route(req, res);
     } else {
         res.writeHead(200);
-        res.end('Bare Server is running.');
+        res.end('Server connection active.'); // Disguised fallback text
     }
 });
 
